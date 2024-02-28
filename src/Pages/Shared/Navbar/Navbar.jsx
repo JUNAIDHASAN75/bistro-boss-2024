@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
-
+import logo from '../../../assets/logo.png'
 const Navbar = () => {
     const navItem = <>
-        <Link to="/">Home</Link>
-        <Link> Item 1</Link>
-        <Link> Item 2</Link>
-        <Link> Item 3</Link>
-        <Link> Item 4</Link>
+        <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]" to="/">Home</Link>
+        <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]"> Item 1</Link>
+        <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]"> Item 2</Link>
+        <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]"> Item 3</Link>
+        <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]"> Item 4</Link>
     </>
     return (
         <div>
@@ -17,20 +17,21 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3  p-2 shadow bg-black bg-opacity-60 w-52 h-auto z-50">
                             {navItem}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <Link to="/" className=" text-xl uppercase ps-4 "> <img className="w-1/4 ms-6" src={logo} alt="" />
+                        bistro boss
+                        
+                    </Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 lg:flex gap-12">
+                <div className="navbar-end pe-6 hidden lg:flex">
+                    <ul className="menu menu-horizontal px-1 lg:flex gap-12 text-xl text-white ">
                        {navItem}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
-                </div>
+                
             </div>
         </div>
     );

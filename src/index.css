@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.swiper-pagination {
+    position: absolute;
+    top:0
+    /* Add other styling properties as needed */
+  }
