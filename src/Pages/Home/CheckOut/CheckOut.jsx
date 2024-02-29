@@ -1,25 +1,19 @@
-import { useEffect, useState } from "react";
+
 import Header from "../../../Components/Headers/Header";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
+import UseMenu from "../../../Hooks/UseMenu";
 
 
 const CheckOut = () => {
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        fetch('menu.json')
-            .then(res => res.json())
-            .then(data => {
-                const popularItem = data.filter(item => item.category === 'popular')
-                setData(popularItem)
-            })
-    }, [])
+    const [data] = UseMenu();
+    const  popularItem = data.filter(item =>item.category === 'popular')
     return (
         <div className="">
             <Header subHeading={"Check It Out"} heading={'FROM OUR MENU'}></Header>
             <section className="my-12">
                 <div className="grid grid-cols-2 gap-12 px-3">
                     {
-                        data.map(item => <MenuItem
+                        popularItem.map(item => <MenuItem
                             key={item._id}
                             item={item}
                         ></MenuItem>)
