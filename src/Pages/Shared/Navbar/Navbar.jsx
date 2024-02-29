@@ -4,7 +4,7 @@ import logo from '../../../assets/logo.png'
 const Navbar = () => {
     const navItem = <>
         <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]" to="/">Home</Link>
-        <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]"> Item 1</Link>
+        <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]" to="/menu">Our Menu</Link>
         <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]"> Item 2</Link>
         <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]"> Item 3</Link>
         <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]"> Item 4</Link>
