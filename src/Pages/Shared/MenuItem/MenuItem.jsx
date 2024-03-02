@@ -5,10 +5,10 @@ const MenuItem = ({ item }) => {
     const { name, recipe, image, price } = item
     return (
         <div className="flex items-start w-full gap-3">
-            <div className="">
-                <img className="w-[120px] rounded-e-full rounded-b-full shadow-lg shadow-black" src={image} alt="" />
+            <div className="w-1/4">
+                <img className="w-full rounded-e-full rounded-b-full shadow-lg shadow-black" src={image} alt="" />
             </div>
-            <div>
+            <div className="w-full">
                 <h4>{name}</h4>
                 <p>{recipe}</p>
             </div>
