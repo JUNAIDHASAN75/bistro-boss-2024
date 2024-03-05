@@ -42,7 +42,7 @@ const Menu = () => {
                 <MenuItems items={soup} img={soups} title={"soup"}></MenuItems>
             </div>
             <div className='my-12'>
-                <MenuItems items={drinks} img={drink} title={'drink'}></MenuItems>
+                <MenuItems items={drinks} img={drink} title={'drinks'}></MenuItems>
             </div>
         </div>
     );
