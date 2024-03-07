@@ -1,24 +1,27 @@
 import loginImg from '../../assets/others/authentication2.png';
 import bgImg from '../../assets/others/authentication.png';
 import { Link } from 'react-router-dom';
+import { RiFacebookLine } from "react-icons/ri";
+import { RiGoogleLine } from "react-icons/ri";
+import { FaGithub } from "react-icons/fa";
 
 
 const Login = () => {
-    const handleSubmit = e =>{
+    const handleSubmit = e => {
         e.preventDefault()
         const form = e.target;
         console.log(form)
         const email = form.email.value;
         console.log(email)
         const password = form.password.value;
-        const user = {email,password}
+        const user = { email, password }
         console.log(user)
     }
     return (
-        <div className="hero min-h-screen" style={{backgroundImage: `url(${bgImg})`}}>
-            <div className="hero-content flex-col lg:flex-row shadow-2xl  " style={{backgroundImage: `url(${bgImg})`}}>
+        <div className="hero min-h-screen" style={{ backgroundImage: `url(${bgImg})` }}>
+            <div className="hero-content flex-col lg:flex-row shadow-2xl  " style={{ backgroundImage: `url(${bgImg})` }}>
                 <div className="w-full text-center lg:text-left">
-                   <img src={loginImg} alt="" />
+                    <img src={loginImg} alt="" />
                 </div>
                 <div className="w-full p-12 ">
                     <h1 className="text-3xl font-semibold text-center text-black">Login</h1>
@@ -44,8 +47,22 @@ const Login = () => {
                         </div>
                     </form>
                     <div className='text-[#D1A054] text-center mt-2'>
-                    <span>New Here? </span>
-                    <Link to="/signup" className='font-semibold'>Create a New Account</Link>
+                        <span>New Here? </span>
+                        <Link to="/signup" className='font-semibold'>Create a New Account</Link>
+                        <div className='mt-6'>
+                        <p className='text-black'>Or sign in with</p>
+                        <div className='flex justify-center gap-6 mt-8'>
+                            <div  className='tooltip ' data-tip="facebook">
+                            <RiFacebookLine className='text-3xl btn btn-circle btn-outline  border-2 text-black'/>
+                            </div>
+                            <div className='tooltip' data-tip="google">                               
+                            <RiGoogleLine   className='text-3xl btn btn-circle btn-outline border-2 text-black' />
+                            </div>
+                            <div className='tooltip' data-tip="github">                               
+                            <FaGithub    className='text-3xl btn btn-circle btn-outline border-2 text-black' />
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
