@@ -4,9 +4,16 @@ import { Link } from 'react-router-dom';
 import { RiFacebookLine } from "react-icons/ri";
 import { RiGoogleLine } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa";
+import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { useEffect, useRef, useState } from 'react';
 
 
 const Login = () => {
+    const captchaRef = useRef(null);
+    const [disabled, setDisabled] = useState(true);
+    useEffect(()=>{
+        loadCaptchaEnginge(6)
+    },[])
     const handleSubmit = e => {
         e.preventDefault()
         const form = e.target;
@@ -16,6 +23,15 @@ const Login = () => {
         const password = form.password.value;
         const user = { email, password }
         console.log(user)
+    }
+    const handleValidate = () =>{
+        const user_captcha_value = captchaRef.current.value;
+        if(validateCaptcha(user_captcha_value)){
+            setDisabled(false)
+        }else{
+            setDisabled(true)
+        }
+        
     }
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: `url(${bgImg})` }}>
@@ -42,8 +58,15 @@ const Login = () => {
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
+                        <div className="form-control text-black relative ">
+                            <label className="label w-full">
+                            <LoadCanvasTemplate className="w-full rounded-sm bg-transparent" />
+                            </label>
+                            <input type="text" ref={captchaRef}  name="captcha" placeholder="type the text above" className="input input-bordered bg-white text-black " required />
+                            <button onClick={handleValidate} className="btn btn-xs btn-outline absolute end-2 bottom-3">Validate</button>
+                        </div>
                         <div className="form-control mt-6">
-                            <input className=" text-center bg-[#D1A054] text-[white] font-semibold  rounded-md  hover:bg-[#0e0d0d] hover:border-[#BB8506] hover:text-[] transition-all px-3 py-2 mt-2" type="submit" value="Login" />
+                            <input  disabled={disabled} className=" btn text-center bg-[#D1A054] text-[white] font-semibold  rounded-md  hover:bg-[#0e0d0d] hover:border-[#BB8506] hover:text-[] transition-all px-3 py-2 mt-2" type="submit" value="Login" />
                         </div>
                     </form>
                     <div className='text-[#D1A054] text-center mt-2'>

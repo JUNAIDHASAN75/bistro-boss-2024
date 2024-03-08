@@ -43,17 +43,15 @@ const SignUp = () => {
                                 <span className="">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered bg-white text-black" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                            
                         </div>
                         <div className="form-control mt-6">
-                            <input className=" text-center bg-[#D1A054] text-[white] font-semibold  rounded-md  hover:bg-[#0e0d0d] hover:border-[#BB8506] hover:text-[] transition-all px-3 py-2 mt-2" type="submit" value="Login" />
+                            <input className=" text-center bg-[#D1A054] text-[white] font-semibold  rounded-md  hover:bg-[#0e0d0d] hover:border-[#BB8506] hover:text-[] transition-all px-3 py-2 mt-2" type="submit" value="Sign Up" />
                         </div>
                     </form>
                     <div className='text-[#D1A054] text-center mt-2'>
                         <span>Already registered? </span>
-                        <Link to="/signup" className='font-semibold'>Go to log in</Link>
+                        <Link to="/login" className='font-semibold'>Go to log in</Link>
                         <div className='mt-6'>
                         <p className='text-black'>Or sign up with</p>
                         <div className='flex justify-center gap-6 mt-8'>
