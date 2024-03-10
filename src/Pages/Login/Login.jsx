@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { RiFacebookLine } from "react-icons/ri";
 import { RiGoogleLine } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa";
-import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { useEffect, useRef, useState } from 'react';
 
 
