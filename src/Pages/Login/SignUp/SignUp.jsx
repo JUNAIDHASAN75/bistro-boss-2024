@@ -3,18 +3,29 @@ import bgImg from '../../../assets/others/authentication.png';
 import { Link } from 'react-router-dom';
 import { RiFacebookLine, RiGoogleLine } from 'react-icons/ri';
 import { FaGithub } from 'react-icons/fa';
+import { useContext } from 'react';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 
 
 const SignUp = () => {
+    const { createUser, updateUserProfile } = useContext(AuthContext)
     const handleSubmit = e => {
         e.preventDefault()
         const form = e.target;
         const name = form.name.value;
+        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { name,email, password }
-        console.log(user)
+        createUser(email, password)
+        .then(result =>{
+            const user = result.user;
+            console.log(user) 
+            updateUserProfile(name, photoURL)
+            .then(() =>{
+                console.log('profile is updated')
+            })
+        })
     }
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: `url(${bgImg})` }}>
@@ -34,6 +45,12 @@ const SignUp = () => {
                         </div>
                         <div className="form-control text-black">
                             <label className="label">
+                                <span className="">Photo URL</span>
+                            </label>
+                            <input type="text" name="photoURL" placeholder="photoURL" className="input input-bordered bg-white text-black" required />
+                        </div>
+                        <div className="form-control text-black">
+                            <label className="label">
                                 <span className="">Email</span>
                             </label>
                             <input type="email" name="email" placeholder="email" className="input input-bordered bg-white text-black" required />
@@ -43,7 +60,7 @@ const SignUp = () => {
                                 <span className="">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered bg-white text-black" required />
-                            
+
                         </div>
                         <div className="form-control mt-6">
                             <input className=" text-center bg-[#D1A054] text-[white] font-semibold  rounded-md  hover:bg-[#0e0d0d] hover:border-[#BB8506] hover:text-[] transition-all px-3 py-2 mt-2" type="submit" value="Sign Up" />
@@ -53,18 +70,18 @@ const SignUp = () => {
                         <span>Already registered? </span>
                         <Link to="/login" className='font-semibold'>Go to log in</Link>
                         <div className='mt-6'>
-                        <p className='text-black'>Or sign up with</p>
-                        <div className='flex justify-center gap-6 mt-8'>
-                            <div  className='tooltip ' data-tip="facebook">
-                            <RiFacebookLine className='text-3xl btn btn-circle btn-outline  border-2 text-black'/>
+                            <p className='text-black'>Or sign up with</p>
+                            <div className='flex justify-center gap-6 mt-8'>
+                                <div className='tooltip ' data-tip="facebook">
+                                    <RiFacebookLine className='text-3xl btn btn-circle btn-outline  border-2 text-black' />
+                                </div>
+                                <div className='tooltip' data-tip="google">
+                                    <RiGoogleLine className='text-3xl btn btn-circle btn-outline border-2 text-black' />
+                                </div>
+                                <div className='tooltip' data-tip="github">
+                                    <FaGithub className='text-3xl btn btn-circle btn-outline border-2 text-black' />
+                                </div>
                             </div>
-                            <div className='tooltip' data-tip="google">                               
-                            <RiGoogleLine   className='text-3xl btn btn-circle btn-outline border-2 text-black' />
-                            </div>
-                            <div className='tooltip' data-tip="github">                               
-                            <FaGithub    className='text-3xl btn btn-circle btn-outline border-2 text-black' />
-                            </div>
-                        </div>
                         </div>
                     </div>
                 </div>
