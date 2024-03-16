@@ -1,14 +1,20 @@
 import loginImg from '../../assets/others/authentication2.png';
 import bgImg from '../../assets/others/authentication.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { RiFacebookLine } from "react-icons/ri";
 import { RiGoogleLine } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
+    const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
     const captchaRef = useRef(null);
     const [disabled, setDisabled] = useState(true);
     useEffect(()=>{
@@ -21,8 +27,19 @@ const Login = () => {
         const email = form.email.value;
         console.log(email)
         const password = form.password.value;
-        const user = { email, password }
-        console.log(user)
+        signIn(email, password)
+        .then(result=>{
+            const user = result.user;
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "LOGIN SUCCESSFULLY",
+                showConfirmButton: false,
+                timer: 1500
+              });
+              navigate(from, {replace:true})
+            console.log(user)
+        })
     }
     const handleValidate = () =>{
         const user_captcha_value = captchaRef.current.value;
