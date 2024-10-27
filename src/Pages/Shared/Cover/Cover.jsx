@@ -20,5 +20,4 @@ const Cover = ({ img, title, subTitle }) => {
         </Parallax>
     );
 };
-
 export default Cover;

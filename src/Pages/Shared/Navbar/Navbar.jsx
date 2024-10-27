@@ -14,16 +14,14 @@ const Navbar = () => {
                 console.log('log out successfully')
             })
     }
-    const handleAddToCart = (food)=>{
-        console.log(food)
-    }
+    
     const navItem = <>
         <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]" to="/">Home</Link>
         <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]" to="/menu">Our Menu</Link>
         <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]" to="/order/salad"> Order</Link>
         <Link className="hover:text-[#ff9100] transition-all hover:border-b-2 hover:border-[#ff9100]" to="/secret"> Secret File</Link>
-        <Link className="text-[] transition-all" to="/secret">
-            <button onClick={()=>handleAddToCart()} className="flex items-center md:mt-2 gap-2">
+        <Link className="text-[] transition-all" to="/dashboard/cart">
+            <button  className="flex items-center md:mt-2 gap-2">
                 <FaCartShopping/>
                 <div className="badge bg-[#ff9100] border-[#ff9100] text-white badge-secondary">{cart?.length}+</div>
             </button>
